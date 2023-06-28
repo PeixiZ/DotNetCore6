@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\OneDrive - szmicro\\codingfuture\\C#\\asp.net\\DotNetCore6\\FileAbstract\\FileAbstract.csproj": {}
+    "c:\\Users\\pepsizheng\\Desktop\\DotNetCore6\\FileAbstract\\FileAbstract.csproj": {}
   },
   "projects": {
-    "D:\\OneDrive - szmicro\\codingfuture\\C#\\asp.net\\DotNetCore6\\FileAbstract\\FileAbstract.csproj": {
+    "c:\\Users\\pepsizheng\\Desktop\\DotNetCore6\\FileAbstract\\FileAbstract.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\OneDrive - szmicro\\codingfuture\\C#\\asp.net\\DotNetCore6\\FileAbstract\\FileAbstract.csproj",
+        "projectUniqueName": "c:\\Users\\pepsizheng\\Desktop\\DotNetCore6\\FileAbstract\\FileAbstract.csproj",
         "projectName": "FileAbstract",
-        "projectPath": "D:\\OneDrive - szmicro\\codingfuture\\C#\\asp.net\\DotNetCore6\\FileAbstract\\FileAbstract.csproj",
+        "projectPath": "c:\\Users\\pepsizheng\\Desktop\\DotNetCore6\\FileAbstract\\FileAbstract.csproj",
         "packagesPath": "C:\\Users\\pepsizheng\\.nuget\\packages\\",
-        "outputPath": "D:\\OneDrive - szmicro\\codingfuture\\C#\\asp.net\\DotNetCore6\\FileAbstract\\obj\\",
+        "outputPath": "c:\\Users\\pepsizheng\\Desktop\\DotNetCore6\\FileAbstract\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "D:\\Program Files\\DevExpress 22.1\\Components\\Offline Packages",

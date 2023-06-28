@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "cXY7YxDIU7Ycg6Q7VJM3WlCUtp1Q+NIJmmcpUUAQBriZ6UM2kko1UkAw84D7+fTc5kIAjVzIy68aYnCUbAHXYQ==",
+  "dgSpecHash": "Bq0LFwHrLMrSY9/Lf5vvxCuqVoorj2CSjtcEFTXu3sDT2epaaatSWEOEQ41HHBknHXWyBcL4cmO9v0PEGRMAoA==",
   "success": true,
-  "projectFilePath": "D:\\OneDrive - szmicro\\codingfuture\\C#\\asp.net\\DotNetCore6\\FileAbstract\\FileAbstract.csproj",
+  "projectFilePath": "c:\\Users\\pepsizheng\\Desktop\\DotNetCore6\\FileAbstract\\FileAbstract.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\pepsizheng\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\2.2.0\\microsoft.extensions.caching.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\pepsizheng\\.nuget\\packages\\microsoft.extensions.caching.redis\\2.2.0\\microsoft.extensions.caching.redis.2.2.0.nupkg.sha512",

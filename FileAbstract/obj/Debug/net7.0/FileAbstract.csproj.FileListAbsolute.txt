@@ -27,3 +27,32 @@ D:\OneDrive - szmicro\codingfuture\C#\asp.net\DotNetCore6\FileAbstract\obj\Debug
 D:\OneDrive - szmicro\codingfuture\C#\asp.net\DotNetCore6\FileAbstract\obj\Debug\net7.0\scopedcss\bundle\FileAbstract.styles.css
 D:\OneDrive - szmicro\codingfuture\C#\asp.net\DotNetCore6\FileAbstract\bin\Debug\net7.0\Microsoft.Extensions.Caching.Redis.dll
 D:\OneDrive - szmicro\codingfuture\C#\asp.net\DotNetCore6\FileAbstract\bin\Debug\net7.0\StackExchange.Redis.StrongName.dll
+C:\Users\pepsizheng\Desktop\DotNetCore6\FileAbstract\bin\Debug\net7.0\FileAbstract.exe
+C:\Users\pepsizheng\Desktop\DotNetCore6\FileAbstract\bin\Debug\net7.0\FileAbstract.deps.json
+C:\Users\pepsizheng\Desktop\DotNetCore6\FileAbstract\bin\Debug\net7.0\FileAbstract.runtimeconfig.json
+C:\Users\pepsizheng\Desktop\DotNetCore6\FileAbstract\bin\Debug\net7.0\FileAbstract.dll
+C:\Users\pepsizheng\Desktop\DotNetCore6\FileAbstract\bin\Debug\net7.0\FileAbstract.pdb
+C:\Users\pepsizheng\Desktop\DotNetCore6\FileAbstract\bin\Debug\net7.0\Microsoft.Extensions.Caching.Redis.dll
+C:\Users\pepsizheng\Desktop\DotNetCore6\FileAbstract\bin\Debug\net7.0\Pipelines.Sockets.Unofficial.dll
+C:\Users\pepsizheng\Desktop\DotNetCore6\FileAbstract\bin\Debug\net7.0\StackExchange.Redis.dll
+C:\Users\pepsizheng\Desktop\DotNetCore6\FileAbstract\bin\Debug\net7.0\StackExchange.Redis.StrongName.dll
+C:\Users\pepsizheng\Desktop\DotNetCore6\FileAbstract\obj\Debug\net7.0\FileAbstract.csproj.AssemblyReference.cache
+C:\Users\pepsizheng\Desktop\DotNetCore6\FileAbstract\obj\Debug\net7.0\FileAbstract.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\pepsizheng\Desktop\DotNetCore6\FileAbstract\obj\Debug\net7.0\FileAbstract.AssemblyInfoInputs.cache
+C:\Users\pepsizheng\Desktop\DotNetCore6\FileAbstract\obj\Debug\net7.0\FileAbstract.AssemblyInfo.cs
+C:\Users\pepsizheng\Desktop\DotNetCore6\FileAbstract\obj\Debug\net7.0\FileAbstract.csproj.CoreCompileInputs.cache
+C:\Users\pepsizheng\Desktop\DotNetCore6\FileAbstract\obj\Debug\net7.0\FileAbstract.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\pepsizheng\Desktop\DotNetCore6\FileAbstract\obj\Debug\net7.0\staticwebassets\msbuild.FileAbstract.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\pepsizheng\Desktop\DotNetCore6\FileAbstract\obj\Debug\net7.0\staticwebassets\msbuild.build.FileAbstract.props
+C:\Users\pepsizheng\Desktop\DotNetCore6\FileAbstract\obj\Debug\net7.0\staticwebassets\msbuild.buildMultiTargeting.FileAbstract.props
+C:\Users\pepsizheng\Desktop\DotNetCore6\FileAbstract\obj\Debug\net7.0\staticwebassets\msbuild.buildTransitive.FileAbstract.props
+C:\Users\pepsizheng\Desktop\DotNetCore6\FileAbstract\obj\Debug\net7.0\staticwebassets.pack.json
+C:\Users\pepsizheng\Desktop\DotNetCore6\FileAbstract\obj\Debug\net7.0\staticwebassets.build.json
+C:\Users\pepsizheng\Desktop\DotNetCore6\FileAbstract\obj\Debug\net7.0\staticwebassets.development.json
+C:\Users\pepsizheng\Desktop\DotNetCore6\FileAbstract\obj\Debug\net7.0\scopedcss\bundle\FileAbstract.styles.css
+C:\Users\pepsizheng\Desktop\DotNetCore6\FileAbstract\obj\Debug\net7.0\FileAbstract.csproj.CopyComplete
+C:\Users\pepsizheng\Desktop\DotNetCore6\FileAbstract\obj\Debug\net7.0\FileAbstract.dll
+C:\Users\pepsizheng\Desktop\DotNetCore6\FileAbstract\obj\Debug\net7.0\refint\FileAbstract.dll
+C:\Users\pepsizheng\Desktop\DotNetCore6\FileAbstract\obj\Debug\net7.0\FileAbstract.pdb
+C:\Users\pepsizheng\Desktop\DotNetCore6\FileAbstract\obj\Debug\net7.0\FileAbstract.genruntimeconfig.cache
+C:\Users\pepsizheng\Desktop\DotNetCore6\FileAbstract\obj\Debug\net7.0\ref\FileAbstract.dll
