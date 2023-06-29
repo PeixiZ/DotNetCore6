@@ -19,9 +19,13 @@ descript framework's functions with 'ASP DOTNET CORE 6' the book' s explain
    - `using Microsoft.Extensions.DependencyInjection;`
    - `using Microsoft.Extensions.DependencyInjection.Extensions;` 
         注意，这里要在控制台上方引入此两个命名空间
-1. 源码
+   - 这里使用NET 6.0+ 或者 7.0+均可以，老旧的什么startup.cs文件就一律不看了，看了很多文章都还是写了这个，想吐槽下什么习惯什么的，想入门学习下非得让我去看你们之前老旧的项目是如何实现这个一样的结构的，完全没有必要。
+   - 作为原始对比，上面的控制台没有使用框架，那我们就还要再建一个框架，看看它具体做了什么
+   - `dotnet new mvc --name MVC`  
+        因为是NET Core框架，所以上面引用的Nuget包就不用加了，直接就可以开始看和写了。
+2. 源码
 
-    - 代码对比  
+    - __代码对比：NET Core__  
         首先我们先来看在NET Core中，我们使用的方法是，`buidler.Services.Add<Interface, Implyment>();` 这里的 `Services`类型就是`IServiceCollection`，从导航的类看，知道是`WebApplicationBuilder`的公开属性，代码如下
         ```
         public IServiceCollection Services { get; }
@@ -195,5 +199,23 @@ descript framework's functions with 'ASP DOTNET CORE 6' the book' s explain
         }
         ```
         可以上下文对比下，跟`builder.Services.AddSingleton<IMiddleware, Define>();`方法一样，但是在调用`Add(...)`方法的时候只有最后一个参数是`ServiceLifetime.Scoped`,同理
-        `builder.Services.AddTransient<IMiddleware, Define>();`方法也是执行到该方法，只不过最后一个参数是`ServiceLifetime.Transient`,所以至此就都知道了，注册接口和实现类型是怎么一回事了，开始画UML总结
-2. 总结
+        `builder.Services.AddTransient<IMiddleware, Define>();`方法也是执行到该方法，只不过最后一个参数是`ServiceLifetime.Transient`,所以至此就都知道了，注册接口和实现类型是怎么一回事了。
+    - __代码对比：Console__  
+        看完了NET Core的接口和实现类型怎么注册的，现在来看控制台能否使用跟它一样的功能。
+        因为我们加了Nuget包，也引用了两个命名空间，所以直接如何使用，代码如下：
+        ```
+        // See https://aka.ms/new-console-template for more information
+        using IOCAbstract;
+        using Microsoft.Extensions.DependencyInjection;
+        using Microsoft.Extensions.DependencyInjection.Extensions;
+
+        Console.WriteLine("Hello, World!");
+
+
+        IServiceCollection _services = new ServiceCollection();
+        _services.AddSingleton<IMiddleware, Define>();
+        ```
+        在`Console.WriteLine("Hello, World!");`的下方两句代码，是如何使用这个框架的关键，可以看到，因为在`Console.WriteLine("Hello, World!");`及它之前的代码，并没有跟NET Core一样，有一个`builder`的存在，所以这里也就没有`builder.Services`可以直接使用，那在NET Core中我们知道，`Services`的类型是`IServiceCollection`的实现类，在NET Core的F12导航过程中我们可以看到，实现了这个接口的类有两个，一个是`WebApplicationServiceCollection`, 另一个是`ServiceCollection`,而具体的`Add`操作又只是在`ServiceCollection`这个类中，所以第一想法是我们先直接实现核心，也就是`new ServiceCollection();`，这里也就是在控制台程序中创建了一个跟NET Core的`builder.Services`一样的实例，所以剩下的，我们就再去调用扩展方法即可，也就是第二句`_services.AddSingleton<IMiddleware, Define>();`可以F12导航进去之后，就发现跟NET Core框架是一样的流程了，所以到此他们两个的各自实现就清楚了。接下来开始画UML总结
+3. 总结  
+   
+   ![Alt text](./IOCAbstract/image.png)
