@@ -219,3 +219,22 @@ descript framework's functions with 'ASP DOTNET CORE 6' the book' s explain
 3. 总结  
    
    ![Alt text](./IOCAbstract/image.png)
+
+## Configuration源码
+继续记录下一个组件Configuration，同样的也是参考了如下文章：
+* [还是很乱](https://www.cnblogs.com/Z7TS/p/17426023.html)
+* [应该是NET5.0之前的老版本](https://www.cnblogs.com/wucy/p/13172284.html)
+
+1. 环境介绍  
+   同样的，因为Configuration在NET Core框架已经集成，所以我们也是建立一个控制台程序和一个NET Core程序来做源码对比，这里的NET Core仍然复用解读IOC源码的MVC项目。
+   - `dotnet new console --name ConfigAbstract`
+        新建控制台项目.
+   - `dotnet add package Microsoft.Extensions.DependencyInjection`        
+   - `dotnet add package Microsoft.Extensions.Configuration`
+     添加Config和DI的Nuget包,NET Core的项目不用是因为它已经帮我们引用了且放在全局引用上，所以我们都不用自己去添加Nuget包
+   - `using Microsoft.Extensions.DependencyInjection;`
+   - `using Microsoft.Extensions.DependencyInjection.Extensions;` 
+   - `using Microsoft.Extensions.Configuration;`
+        注意，这里要在控制台上方引入上述命名空间
+2. 源码
+3. 总结
