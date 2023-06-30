@@ -237,4 +237,106 @@ descript framework's functions with 'ASP DOTNET CORE 6' the book' s explain
    - `using Microsoft.Extensions.Configuration;`
         注意，这里要在控制台上方引入上述命名空间
 2. 源码
-3. 总结
+   - __代码对比：NET Core__  
+        首先我们还是先看NET Core里面的框架是怎么用的，我们的使用方法是`builder.Configuration.SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("people.json");`，其中`SetBasePath(Directory.GetCurrentDirectory())`是设置读取文件的时候，基本路径是当前的项目文件夹，`AddJsonFile("people.json");`这个则是读取的是`people.json`文件。那我们看下`Configuration`是什么，发现它也是`WebApplicationBuilder`的公开属性，代码如下：
+        ```
+        public ConfigurationManager Configuration => _hostApplicationBuilder.Configuration;
+        ```
+        那这里的`_hostApplicationBuilder`F12导航看下代码如下：
+        ```
+        private readonly HostApplicationBuilder _hostApplicationBuilder;
+        ```
+        也就是一个静态只读的变量，这个变量是在`WebApplicationBuilder`的类实例初始化的时候实例化的，可以在`WebApplicationBuilder`的构造函数里面看到如下代码：
+        ```
+        internal WebApplicationBuilder(WebApplicationOptions options, Action<IHostBuilder>? configureDefaults = null)
+        {
+            var configuration = new ConfigurationManager();
+
+            configuration.AddEnvironmentVariables(prefix: "ASPNETCORE_");
+
+            _hostApplicationBuilder = new HostApplicationBuilder(new HostApplicationBuilderSettings
+            {
+                Args = options.Args,
+                ApplicationName = options.ApplicationName,
+                EnvironmentName = options.EnvironmentName,
+                ContentRootPath = options.ContentRootPath,
+                Configuration = configuration,
+            });
+            
+            ...
+        }
+        ```
+        其他的构造我们先不看，可以看到`_hostApplicationBuilder`是实例化了。而且访问`_hostApplicationBuilder.Configuration`可以发现，就是访问实例化中`HostApplicationBuilderSettings`的`Configuration`属性，而这个属性又是`ConfigurationManager`的实例化对象，所以这个我们知道了`builder.Configuration`就是一个`ConfigurationManager`的实例化对象。然后我们直接看`AddJsonFile("people.json");`是怎么实现的。F12导航进去可以发现如下代码：
+        ```
+        public static IConfigurationBuilder AddJsonFile(this IConfigurationBuilder builder, string path, bool optional)
+        {
+            return AddJsonFile(builder, provider: null, path: path, optional: optional, reloadOnChange: false);
+        }
+        ```
+        继续导航`AddJsonFile(builder, provider: null, path: path, optional: optional, reloadOnChange: false);`代码：
+        ```
+        public static IConfigurationBuilder AddJsonFile(this IConfigurationBuilder builder, IFileProvider? provider, string path, bool optional, bool reloadOnChange)
+        {
+            ThrowHelper.ThrowIfNull(builder);
+
+            if (string.IsNullOrEmpty(path))
+            {
+                throw new ArgumentException(SR.Error_InvalidFilePath, nameof(path));
+            }
+
+            return builder.AddJsonFile(s =>
+            {
+                s.FileProvider = provider;
+                s.Path = path;
+                s.Optional = optional;
+                s.ReloadOnChange = reloadOnChange;
+                s.ResolveFileProvider();
+            });
+        }
+        ```
+        可以看到，这两个都是`IConfigurationBuilder`的扩展方法，那我们的`builder.Configuration`是`ConfigurationManager`类，所以应该是有继承`IConfigurationBuilder`接口，导航到`ConfigurationManager`类定义发现确实继承了该接口，所以我们可以使用到这两个扩展方法，那继续看这扩展方法还调用了什么,导航代码如下：
+        ```
+        public static IConfigurationBuilder AddJsonFile(this IConfigurationBuilder builder, Action<JsonConfigurationSource>? configureSource)
+            => builder.Add(configureSource);
+        ```
+        还是个扩展方法，将委托作为参数调用`Add()`方法，继续导航看`Add()`做了什么，代码如下：
+        ```
+        public static IConfigurationBuilder Add<TSource>(this IConfigurationBuilder builder, Action<TSource>? configureSource) where TSource : IConfigurationSource, new()
+        {
+            var source = new TSource();
+            configureSource?.Invoke(source);
+            return builder.Add(source);
+        }
+        ```
+        可以看到，这也是扩展方法，这里是将委托的参数实例化，并将此实例化对象作为参数传递给该委托方法，所以也就是实例化了一个`JsonConfigurationSource`的类型对象，并将其属性赋值为如下：
+        ```
+        s =>
+            {
+                s.FileProvider = provider;
+                s.Path = path;
+                s.Optional = optional;
+                s.ReloadOnChange = reloadOnChange;
+                s.ResolveFileProvider();
+            }
+        ```
+        最后看下`Add(source)`做了什么，继续导航，发现这个`Add`是代码：
+        ```
+        IConfigurationBuilder Add(IConfigurationSource source);
+        ```
+        也就是它是接口的方法，那我们就要回到`builder.Configuration`的定义`ConfigurationManager`类，看它是怎么实现这个接口`Add`方法的，代码如下：
+        ```
+        IConfigurationBuilder IConfigurationBuilder.Add(IConfigurationSource source)
+        {
+            ThrowHelper.ThrowIfNull(source);
+
+            _sources.Add(source);
+            return this;
+        }
+        ```
+        可以发现，在`ConfigurationManager`类中，调用了`_sources.Add(source);`之后便return了，也就是追踪终于结束了。我们看下`_sources.Add(source);`做了什么，发现如下：
+        ```
+        public IList<IConfigurationSource> Sources => _sources;
+        ```
+        也就是只是把这个source添加到一个LIST集合里面去。所以至此我们就知道`AddJsonFile`是怎么做的了，接下来便开始画UML。
+        
+1. 总结
